@@ -10,12 +10,14 @@
 </head>
 
 <body>
-    <div th:replace = "~{base :: parent(~{::p})}"></div>
+    <div th:replace = "~{base :: parent(~{::section})}">
+
         <section>
             <h1>Vinay Kumar Yadav</h1>
             <p>Hello , This is Content</p>
             <button>Click the Button</button>
         </section>
+    </div>
 
 
 </body>

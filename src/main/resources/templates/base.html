@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html th:fragment="parent(content)" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" initial-scale="1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}" />
+    <link rel="stylesheet" data-th-href="@{'/css/style.css'}" />
+    <title></title>
 
 </head>
 
 <body>
-<div th:fragment="parent(content)"></div>
-    <div th:replace="${content}"></div>
+    <section data-th-replace="${content}">
+
+    </section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<script data-th-src="@{'/js/script.js'}"></script>
 </body>
 
-</head>
-
 </html>
+
+
+
+
+
+
+

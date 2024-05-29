@@ -31,4 +31,23 @@ public class PageController {
 
         return "about";
     }
+    @GetMapping("/contact")
+    public String contact(Model model) {
+        model.addAttribute("isLogin", false);
+
+        return "contact";
+    }
+    @GetMapping("/login")
+    public String login(Model model) {
+        model.addAttribute("isLogin", false);
+
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String register(Model model) {
+        model.addAttribute("isLogin", false);
+
+        return "register";
+    }
 }

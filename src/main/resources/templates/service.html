@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 
-<html lang="en" th:replace="~{base :: parent(~{ :: #content})}">
+<html lang="en" th:replace="~{base :: parent(~{ :: #content}, ~{ :: title}, ~{ :: script})}">
 
 <head>
+
+    <title>Service Page</title>
 
 </head>
 
@@ -13,6 +15,7 @@
 
 </body>
 
+<script>   </script>
 </body>
 
 </html>

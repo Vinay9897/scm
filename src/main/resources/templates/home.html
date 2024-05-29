@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: parent(~{:: #content}, ~{:: title}, ~{})}">
 
 
-<head >
-
-
-
+<head>
+    <title>Home Page</title>
 </head>
 
 <body>
-    <div th:replace = "~{base :: parent(~{::section})}">
+    <div id = "content">
 
         <section>
             <h1>Vinay Kumar Yadav</h1>
@@ -19,7 +17,7 @@
         </section>
     </div>
 
-
+    <script>   </script>
 </body>
 
 </html>

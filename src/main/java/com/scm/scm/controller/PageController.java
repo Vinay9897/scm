@@ -3,6 +3,12 @@ package com.scm.scm.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.scm.scm.entities.UserForm;
 
 @Controller
 public class PageController {
@@ -46,8 +52,16 @@ public class PageController {
 
     @GetMapping("/register")
     public String register(Model model) {
-        model.addAttribute("isLogin", false);
+    	UserForm userForm = new UserForm();
+        model.addAttribute("userForm", userForm);
 
         return "register";
     }
+    
+   @PostMapping(value="/doregister")
+    public String doRegister(@ModelAttribute UserForm userForm ) {
+    	System.out.println(userForm);
+    	return "redirect:/register";
+    }
 }
+

@@ -1,51 +1,51 @@
 let currentTheme = getTheme();
 
 document.addEventListener("DOMContentLoaded", () => {
-changeTheme();
+	changeTheme();
 
 });
 
 
-function changeTheme(){
+function changeTheme() {
 
-    const oldTheme = currentTheme;
 
-    const changeThemeButton = document.querySelector('#theme_change_button');
+	const changeThemeButton = document.querySelector('#theme_change_button');
 
-    changeThemeButton.addEventListener("click",() =>{
+	changeThemeButton.addEventListener("click", () => {
+		let oldTheme = currentTheme;
 
-        if(currentTheme  === "dark") {
-            currentTheme = "light";
-        }
-        else if(currentTheme === "light"){
-            currentTheme = "dark";
-        }
+		if (currentTheme === "dark") {
+			currentTheme = "light";
+		}
+		else if (currentTheme === "light") {
+			currentTheme = "dark";
+		}
 
-        // update the new theme in localStorage
-       changePageTheme(currentTheme,oldTheme);
-    });
+		// update the new theme in localStorage
+		changePageTheme(currentTheme, oldTheme);
+	});
 }
 
-function changePageTheme(currentTheme, oldTheme){
-    setTheme(currentTheme);
-    // remove the current theme
-     console.log(oldTheme);
-    document.querySelector('html').classList.remove(oldTheme);
+function changePageTheme(currentTheme, oldTheme) {
+	setTheme(currentTheme);
+	// remove the current theme
+	console.log(oldTheme);
+	document.querySelector('html').classList.remove(oldTheme);
 
-    //set the new current theme
-    document.querySelector('html').classList.add(currentTheme);
-     console.log(currentTheme);
+	//set the new current theme
+	document.querySelector('html').classList.add(currentTheme);
+	console.log(currentTheme);
 
-    // change button text
-    document.querySelector('#theme_change_button').querySelector('span').textContent = currentTheme === "light" ? "Dark" : "Light";
+	// change button text
+	document.querySelector('#theme_change_button').querySelector('span').textContent = currentTheme === "light" ? "Dark" : "Light";
 
 }
 
-function setTheme(theme){
-    localStorage.setItem("theme",theme);
+function setTheme(theme) {
+	localStorage.setItem("theme", theme);
 }
 
 function getTheme() {
-    let theme = localStorage.getItem("theme");
-    return theme ? theme : "light" ;
+	let theme = localStorage.getItem("theme");
+	return theme ? theme : "light";
 }

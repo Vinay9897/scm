@@ -20,7 +20,6 @@ function changeTheme() {
 		else if (currentTheme === "light") {
 			currentTheme = "dark";
 		}
-
 		// update the new theme in localStorage
 		changePageTheme(currentTheme, oldTheme);
 	});

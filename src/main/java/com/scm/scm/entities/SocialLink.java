@@ -23,10 +23,9 @@ public class SocialLink {
     private Long id;
     private String link;
     private String title;
-    
+
     @ManyToOne
     private User user;
-    
     
     @ManyToOne
     private Contact contact;

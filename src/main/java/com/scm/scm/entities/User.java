@@ -20,12 +20,14 @@ import java.util.List;
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
     @Column(name = "username",length = 11,nullable = false,unique = true,updatable = true)
     private String name;
     private String emailId;
     private String password;
     private String about;
+    private String phoneNo;
 
     @Column(length=10000)
     private String profilePic;
@@ -35,6 +37,7 @@ public class User {
     private Boolean emailVerified = false;
     private Boolean phoneVerified = false;
 
+    @Enumerated(value = EnumType.STRING)
     private Providers provider = Providers.SELF;
     private String providerUserId;
 

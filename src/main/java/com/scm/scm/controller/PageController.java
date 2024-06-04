@@ -6,8 +6,10 @@ import com.scm.scm.helpers.Message;
 import com.scm.scm.helpers.MessageType;
 import com.scm.scm.services.UserService;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -66,7 +68,13 @@ public class PageController {
     }
 
     @PostMapping(value = "/doregister")
-    public String processingRegister(@ModelAttribute UserForm userForm, HttpSession session) {
+    public String processingRegister(@Valid @ModelAttribute UserForm userForm, BindingResult bindingResult, HttpSession session) {
+       if(bindingResult.hasErrors()){
+
+           return "register";
+       }
+
+
         User user = new User();
         user.setName(userForm.getUserName());
         user.setPassword(userForm.getPassword());

@@ -29,7 +29,8 @@ public class UserServiceImpl implements UserService {
          
         if(user1 == null)
         {
-        	userRepository.save(user);
+        	User user2 = userRepository.save(user);
+            System.out.println(user2.toString());
         	return " user added";
         }
         else 

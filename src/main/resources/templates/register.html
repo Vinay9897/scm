@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
 	<div id="content" class="mx-2">
 		<div class="grid grid-cols-12">
 			<div class="col-span-4 xl:col-span-4 lg:col-span-4 md:col-span-2"></div>
@@ -18,6 +17,8 @@
 				<!-- card -->
 				<div
 					class="block p-6 border border-t-8 border-blue-700  bg-white  rounded-lg shadow ">
+<!--					message here-->
+					<div data-th-replace="~{message::messagebox}"></div>
 					<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Sign
 						Up</h5>
 					<p class="font-normal text-gray-700 dark:text-gray-400">Create your account here.</p>

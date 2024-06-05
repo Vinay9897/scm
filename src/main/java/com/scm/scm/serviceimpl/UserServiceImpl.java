@@ -3,6 +3,8 @@ package com.scm.scm.serviceimpl;
 import com.scm.scm.entities.User;
 import com.scm.scm.repositories.UserRepository;
 import com.scm.scm.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,25 +12,31 @@ import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+
+    private PasswordEncoder passwordEncoder;
     private UserRepository userRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public User findUserByEmail(String email) {
-        User user = userRepository.findByEmail(email);
+        User user = userRepository.findByEmail(email).orElse(null);
         return user;
     }
 
     @Override
     public String saveUser(User user) {
            
-         User user1  = userRepository.findByEmail(user.getEmailId());
+         User user1  = userRepository.findByEmail(user.getEmailId()).orElse(null);
          
         if(user1 == null)
         {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setRoleList(List.of("ROLE_USER"));
         	User user2 = userRepository.save(user);
             System.out.println(user2.toString());
         	return " user added";
@@ -87,7 +95,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean isUserExistsByEmail(String email) {
-    	User user = userRepository.findByEmail(email);
+    	User user = userRepository.findByEmail(email).orElse(null);
         return !user.equals(null);
     }
 

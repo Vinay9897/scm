@@ -54,10 +54,10 @@ public class PageController {
         return "contact";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/signin")
     public String login(Model model) {
         model.addAttribute("isLogin", false);
-        return "login";
+        return "signin";
     }
 
     @GetMapping("/register")
@@ -70,10 +70,8 @@ public class PageController {
     @PostMapping(value = "/doregister")
     public String processingRegister(@Valid @ModelAttribute UserForm userForm, BindingResult bindingResult, HttpSession session) {
        if(bindingResult.hasErrors()){
-
            return "register";
        }
-
 
         User user = new User();
         user.setName(userForm.getUserName());

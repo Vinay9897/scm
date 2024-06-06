@@ -3,10 +3,12 @@ package com.scm.scm.config;
 import com.scm.scm.serviceimpl.SecurityCustomUserDetailService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
@@ -19,13 +21,33 @@ public class SecurityConfig {
     }
 
 
+
+    // configuration of the Authentication Provider
     @Bean
-    public AuthenticationProvider authenticationProvider() {
+    public DaoAuthenticationProvider  authenticationProvider() {
             DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 
             authProvider.setUserDetailsService(userDetailsService);
             authProvider.setPasswordEncoder(passwordEncoder());
             return authProvider;
+    }
+
+    // configuration of the securityFilter chain
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+
+        //configuration
+
+//    url configuration
+        httpSecurity.authorizeHttpRequests(authorize ->{
+
+            authorize.requestMatchers("/user/**").authenticated();
+            authorize.anyRequest().permitAll();
+        });
+
+        //form default login
+        return httpSecurity.formLogin(Customizer.withDefaults()).build();
     }
 
     @Bean

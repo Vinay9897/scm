@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
     	   updatedUser.setProviderUserId(user.getProviderUserId());
     	   userRepository.save(updatedUser);   
     	   return "user updated";
-    	   }
+       }
 
     	   return "user doesn't exist";
     }

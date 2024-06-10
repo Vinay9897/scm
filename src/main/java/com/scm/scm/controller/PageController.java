@@ -54,10 +54,15 @@ public class PageController {
         return "contact";
     }
 
-    @GetMapping("/signin")
+    @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute("isLogin", false);
-        return "signin";
+        return "login";
+    }
+    @PostMapping("/login")
+    public String loginPost(Model model) {
+        model.addAttribute("isLogin", false);
+        return "login";
     }
 
     @GetMapping("/register")

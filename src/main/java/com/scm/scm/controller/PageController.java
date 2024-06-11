@@ -55,10 +55,11 @@ public class PageController {
     }
 
     @GetMapping("/login")
-    public String login(Model model) {
-        model.addAttribute("isLogin", false);
+    public String login() {
+//        model.addAttribute("isLogin", false);
         return "login";
     }
+
     @PostMapping("/login")
     public String loginPost(Model model) {
         model.addAttribute("isLogin", false);

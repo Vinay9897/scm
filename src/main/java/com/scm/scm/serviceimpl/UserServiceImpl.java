@@ -3,7 +3,6 @@ package com.scm.scm.serviceimpl;
 import com.scm.scm.entities.User;
 import com.scm.scm.repositories.UserRepository;
 import com.scm.scm.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

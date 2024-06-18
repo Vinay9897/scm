@@ -5,9 +5,7 @@
 <meta charset="UTF-8">
 <meta content="width=device-width" initial-scale="1.0" name="viewport">
 
-	<link
-			href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
-			rel="stylesheet" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 
 <link data-th-href="@{'/css/output.css'}" rel="stylesheet" />
 	<link data-th-href="@{'/css/style.css'}" rel="stylesheet" />
@@ -16,12 +14,19 @@
 	integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
 <title data-th-replace="${title}">Base Page</title>
 
 </head>
 
-<body class="dark:bg-grey-900 dark:border-gray-600">
+<body class="dark:bg-grey-900 bg-gray-100 dark:border-gray-600">
+
+	<div th:if="${loggedInUser}">
+		<div data-th-replace="~{user/user_navbar::user-navbar}"></div>
+	</div>
+	<div th:unless="${loggedInUser}">
+		<div data-th-replace="~{navbar :: nav}"></div>
+	</div>
+
 	<div class="p-4">
 		<div th:replace="~{navbar :: nav}"></div>
 	</div>
